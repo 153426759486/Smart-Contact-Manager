@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="parent-tag" th:fragment="parent(content)">
+    <h1>This is parent fragment</h1>
+    <p>Lorem ismalue ijtnio jihtuje </p>
+    <div th:replace="${content}"></div>
+</div>
+<div class="test" th:fragment="test(content)">
+    <div th:replace="${content}"></div>
+</div>
+</body>
+</html>
