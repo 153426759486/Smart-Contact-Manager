@@ -1,20 +1,36 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html th:fragment="parent(content,title,script)"
+        lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+
+    <title th:replace="${title}">Base Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/output.css}">
 </head>
 <body>
-<div class="parent-tag" th:fragment="parent(content)">
-    <h1>This is parent fragment</h1>
-    <p>Lorem ismalue ijtnio jihtuje </p>
-    <div th:replace="${content}"></div>
-</div>
-<div class="test" th:fragment="test(content)">
-    <div th:replace="${content}"></div>
-</div>
+
+ <!--Header-->
+<div data-th-replace="navbar :: navbar"></div>
+
+ <div class="p-4">
+     <section th:replace="${content}"></section>
+     <th:block th:replace="${script}"></th:block>
+ </div>
+
+
+ <!--Footer-->
+<footer class="p-4">
+    Footer: Code with Aman
+</footer>
+
+
+
+ <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+
 </body>
 </html>

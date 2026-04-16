@@ -1,46 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<th:html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+         th:replace="~{base :: parent(~{::#content},~{::#title},~{::script})}" >
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <title id="title">Home Page</title>
 
-    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
 
 
 </head>
 <body>
-<div class="container bg-gray-200 w-1/2 p-4 mx-auto mt-4 flex flex-col justify-center items-center space-y-3">
-    <h1 class="text-2xl font-bold" data-th-text="${name}">
-        Welcome to home Page
-    </h1>
-    <h1 class="text-4xl text-red-500 font-bold">
-        TEST
-    </h1>
-    <p class="text-xl text-gray-700">
-        Youtube Channel : <span data-th-text="${youtubechannel}"></span>
-    </p>
-    <p class="text-gray-400">Lorem essem plisimng hifhe ca diie</p>
-    <div>
-        <button class="px-3 py-3 rounded bg-blue-700 text-white hover:bg-blue-600"> Click Here</button>
+<section id="content">
+    <div class="container bg-gray-200 w-1/2 p-4 mx-auto mt-4 flex flex-col justify-center items-center space-y-3">
+        <h1 class="text-2xl font-bold" data-th-text="${name}">
+            Welcome to home Page
+        </h1>
+        <h1 class="text-4xl text-red-500 font-bold">
+            TEST
+        </h1>
+        <p class="text-xl text-gray-700">
+            Youtube Channel : <span data-th-text="${youtubechannel}"></span>
+        </p>
+        <p class="text-gray-400">Lorem essem plisimng hifhe ca diie</p>
+        <div>
+            <button class="px-3 py-3 rounded bg-blue-700 text-white hover:bg-blue-600"> Click Here</button>
+        </div>
     </div>
-</div>
-<!---flow bite content--->
+    <!---flow bite content--->
 
 
 
-<div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
-    <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy technology acquisitions 2021</h5>
-    <p class="text-body mb-6">Here are the biggest technology acquisitions of 2025 so far, in reverse chronological order.</p>
-    <a href="#" class="inline-flex items-center text-black bg-blue-700 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-        Read more
-        <svg class="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
-    </a>
-</div>
+    <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
+        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy technology acquisitions 2021</h5>
+        <p class="text-body mb-6">Here are the biggest technology acquisitions of 2025 so far, in reverse chronological order.</p>
+        <a href="#" class="inline-flex items-center text-black bg-blue-700 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+            Read more
+            <svg class="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+        </a>
+    </div>
+</section>
 
 
+<script>
+    console.log("Home Page");
+</script>
 
-<script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 
 </body>
-</html>
+</th:html>
