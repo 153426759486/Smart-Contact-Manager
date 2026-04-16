@@ -25,5 +25,10 @@ public class PageController {
         System.out.println("services page loading!");
         return "service";
     }
+    @RequestMapping("/base")
+    public String basePage(){
+        System.out.println("base page loading!");
+        return "base";
+    }
 
 }

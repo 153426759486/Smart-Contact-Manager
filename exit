@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>This is about page</h1>
+
+<!--add fragment base--->
+<div class="host-tag" th:insert="${islogin} ? ~{base:: parent(~{::#second_content})}: ~{base :: test(~{::#not_logged_in})}">
+
+    <section id="main_content">
+        <h1>This is content from section in about page</h1>
+        <button>Click on dynamic content</button>
+    </section>
+    <section id="second_content">
+        <h1>This is second content</h1>
+        <button>click me!</button>
+    </section>
+    <section class="third_content">
+        <h1>This is third content</h1>
+    </section>
+    <section id="not_logged_in">
+        <h3>User not logged in...</h3>
+    </section>
+
+</div>
+
+</body>
+</html>
