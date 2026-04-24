@@ -14,6 +14,18 @@
         <a href="#"
            class="col-span-5  border-t-4 border-blue-700 border-b-4 col-start-4 w-full bg-neutral-primary-soft block p-6  rounded-xl shadow-xs hover:bg-neutral-secondary-medium">
 
+
+            <!--alert message-->
+<!--            <div data-th-replace="message::messagebox"></div>-->
+            <div th:if="${message}"
+                 class="p-3 mb-3 rounded text-white"
+                 th:classappend="${messageType == 'success'} ? 'bg-green-500' : 'bg-red-500'">
+
+                <span th:text="${message}"></span>
+
+            </div>
+
+
             <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">
                 Signup Here
             </h5>
