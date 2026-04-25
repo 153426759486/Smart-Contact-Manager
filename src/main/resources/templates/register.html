@@ -32,12 +32,21 @@
             <p class="font-normal text-gray-400">
                 Start managing contacts on cloud ...
             </p>
-            <form th:action="@{/register}" th:method="post" th:object="${user}" class="mt-5">
+            <form th:action="@{/register}" th:method="post" th:object="${user}" class="mt-5" novalidate>
                 <!--name-->
                 <div class="mb-3">
                     <label for="name" class="block mb-2.5 text-sm font-medium text-heading">Name</label>
                     <input type="text" th:field="*{name}" id="name" class="bg-neutral-secondary-medium border  rounded-lg text-heading
                      text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Enter here" required />
+
+
+
+                <!--Putting errors-->
+
+               <p data-th-if="${#fields.hasErrors('name')}"
+                    data-th-errors="*{name}"
+                       class="text-red-600 py-2 px-1"></p>
+
                 </div>
 
                 <!--Email-Feild-->
@@ -46,7 +55,13 @@
                     <label for="email" class="block mb-2.5 text-sm font-medium text-heading">Email</label>
                     <input type="email"  th:field="*{email}" id="email" class="bg-neutral-secondary-medium border  rounded-lg text-heading
                      text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Enter email" required />
+
+                    <p data-th-if="${#fields.hasErrors('email')}"
+                       data-th-errors="*{email}"
+                       class="text-red-600 py-2 px-1"></p>
+
                 </div>
+
 
                 <!--Password-Feild-->
 
@@ -54,6 +69,11 @@
                     <label for="password" class="block mb-2.5 text-sm font-medium text-heading">Password</label>
                     <input type="password" th:field="*{password}" id="password" class="bg-neutral-secondary-medium border  rounded-lg
                     text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Enter password" required />
+
+                    <p data-th-if="${#fields.hasErrors('password')}"
+                       data-th-errors="*{password}"
+                       class="text-red-600 py-2 px-1"></p>
+
                 </div>
 
                 <!--Phone-Feild-->
@@ -62,6 +82,11 @@
                     <label for="contact" class="block mb-2.5 text-sm font-medium text-heading">Contact</label>
                     <input type="number" th:field="*{phoneNumber}" id="contact" class="bg-neutral-secondary-medium border  rounded-lg
                     text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Enter contact" required />
+
+                    <p data-th-if="${#fields.hasErrors('phoneNumber')}"
+                       data-th-errors="*{phoneNumber}"
+                       class="text-red-600 py-2 px-1"></p>
+
                 </div>
 
                 <!--About-Feild-->
@@ -71,11 +96,15 @@
                     <textarea id="about" th:field="*{about}" rows="6" class="bg-neutral-secondary-medium border  rounded-lg text-heading
                     text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body" placeholder="Write here..."></textarea>
 
+                    <p data-th-if="${#fields.hasErrors('about')}"
+                       data-th-errors="*{about}"
+                       class="text-red-600 py-2 px-1"></p>
+
                 </div>
                 <!--buttons-->
                 <div class="mb-3 flex justify-center space-x-3">
                     <button type="submit" class="px-3 py-2 rounded bg-gray-800 text-white">Signup</button>
-                    <button class="px-3 py-2 rounded bg-orange-800 text-white">Reset</button>
+                    <button type="reset" class="px-3 py-2 rounded bg-orange-800 text-white">Reset</button>
                 </div>
 
 
