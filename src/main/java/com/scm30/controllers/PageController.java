@@ -5,9 +5,11 @@ import com.scm30.model.UserForm;
 import com.scm30.services.UserService;
 import com.scm30.services.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -51,17 +53,24 @@ public class PageController {
         return "register";
     }
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute UserForm userForm, RedirectAttributes redirectAttributes){
+    public String registerUser(@Valid @ModelAttribute("user") UserForm userForm, BindingResult rBindingResult , RedirectAttributes redirectAttributes){
 //        System.out.println(user.getName());
 //        System.out.println(user.getEmail());
 //        System.out.println(user.getAbout());
 //        System.out.println(user.getPhoneNumber());
+
+        //Validate form data:---
+        if(rBindingResult.hasErrors()){
+            return "register";
+        }
+
+
        User user = new User();
        user.setName(userForm.getName());
        user.setEmail(userForm.getEmail());
        user.setPassword(userForm.getPassword());
        user.setAbout(userForm.getAbout());
-       user.setPhoneNumber(user.getPhoneNumber());
+       user.setPhoneNumber(userForm.getPhoneNumber());
        user.setProfilePic("https://www.bing.com/images/search?view=detailV2&ccid=302zgzUH&id=866097613A47EDC880CFD7A95F7211415E0C5EEA&thid=OIP.302zgzUHVpOuGmsmRZudiAHaHk&mediaurl=https%3A%2F%2Fwallpapers.com%2Fimages%2Fhd%2Fcool-profile-picture-87h46gcobjl5e4xu.jpg&exph=1920&expw=1880&q=profile+pictures&form=IRPRST&ck=DF8E3EEE74B2367E808B4F91F0C1B8E8&selectedindex=3&itb=0&ajaxhist=0&ajaxserp=0&vt=0&sim=11");
        userService.saveUser(user);
 
