@@ -8,10 +8,69 @@
 </head>
 <body>
 <div class="content">
-    <h1 class="text-2xl font-bold">
-        Welcome to login page
-    </h1>
-    <p>lorem10</p>
+    <div class="grid grid-cols-12 gap-7 p-6">
+        <!--Page Content-->
+
+        <a href="#"
+           class="col-span-5  border-t-4 border-green-700 border-b-4 col-start-4 w-full bg-neutral-primary-soft block p-6  rounded-xl shadow-xs hover:bg-neutral-secondary-medium">
+
+
+            <!--alert message-->
+            <!--            <div data-th-replace="message::messagebox"></div>-->
+
+
+            <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">
+                Login Here
+            </h5>
+            <p class="font-normal text-gray-400">
+                Start managing contacts on cloud ...
+            </p>
+            <form data-th-action="@{'/authenticate'}" method="post" class="mt-5">
+                <!--name-->
+
+
+                <!--Email-Feild-->
+
+                <div class="mb-3">
+                    <label for="email"  class="block mb-2.5 text-sm font-medium text-heading">Email</label>
+                    <input type="email" name="email"  id="email" class="bg-neutral-secondary-medium border  rounded-lg text-heading
+                     text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Enter email" required />
+
+<!--                    <p data-th-if="${#fields.hasErrors('email')}"-->
+<!--                       data-th-errors="*{email}"-->
+<!--                       class="text-red-600 py-2 px-1"></p>-->
+
+                </div>
+
+
+                <!--Password-Feild-->
+
+                <div class="mb-3">
+                    <label for="password" class="block mb-2.5 text-sm font-medium text-heading">Password</label>
+                    <input type="password"  name="password"  id="password" class="bg-neutral-secondary-medium border  rounded-lg
+                    text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Enter password" required />
+
+<!--                    <p data-th-if="${#fields.hasErrors('password')}"-->
+<!--                       data-th-errors="*{password}"-->
+<!--                       class="text-red-600 py-2 px-1"></p>-->
+
+                </div>
+
+                <!--buttons-->
+                <div class="mb-3 flex justify-center space-x-3">
+                    <button type="submit" class="px-3 py-2 rounded bg-gray-800 text-white">Login</button>
+                    <button type="reset" class="px-3 py-2 rounded bg-orange-800 text-white">Reset</button>
+                </div>
+
+
+
+
+            </form>
+
+
+        </a>
+
+    </div>
 </div>
 <script>
     console.log("login page");
