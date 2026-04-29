@@ -1,13 +1,15 @@
 package com.scm30.entity;
 
 import jakarta.persistence.*;
+import org.jspecify.annotations.Nullable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 //import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity (name = "user")
 @Table (name="users")
@@ -16,7 +18,7 @@ import java.util.Set;
 //@NoArgsConstructor
 //@AllArgsConstructor
 //@Builder
-public class User {
+public class User implements UserDetails {
 
 
     @Id
@@ -34,7 +36,7 @@ public class User {
     private String phoneNumber;
 
     //information
-    private boolean enabled=false;
+    private boolean enabled=true;
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
 
@@ -67,10 +69,6 @@ public class User {
         return email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public String getProfilePic() {
         return profilePic;
     }
@@ -78,10 +76,13 @@ public class User {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
-    public boolean isEnabled() {
-        return enabled;
+    public List<String> getRoleList() {
+        return roleList;
     }
+
+//    public boolean isEnabled() {
+//        return enabled;
+//    }
 
     public boolean isEmailVerified() {
         return emailVerified;
@@ -156,6 +157,61 @@ public class User {
     public void setContact(List<Contact> contact) {
         this.contact = contact;
     }
+
+    public void setRoleList(List<String> roleList) {
+        this.roleList = roleList;
+    }
+
+    // Methods Of UserDetails :-
+
+
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roleList = new ArrayList<>();
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        //List of Roles [Admin,User]
+        //Collection of SimpleGrantedAuthority [role{User,Admin}]
+       Collection<SimpleGrantedAuthority> roles = roleList.stream().map(role-> new SimpleGrantedAuthority(role)).collect(Collectors.toList());
+
+        return roles;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+//    public String getPassword() {
+//        return password;
+//    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+    @Override
+    public boolean isEnabled(){
+        return this.enabled;
+    }
+
 
 
 

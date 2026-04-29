@@ -1,11 +1,14 @@
 package com.scm30.services.impl;
 
+import com.scm30.helper.AppConstants;
 import com.scm30.helper.ResourceNotFoundException;
+import com.scm30.model.UserForm;
 import com.scm30.repositories.UserRepo;
 import com.scm30.services.UserService;
 import com.scm30.entity.User;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +19,19 @@ import java.util.logging.Logger;
 public class UserServiceImpl implements UserService {
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private UserRepo userRepo;
+
+
 
 //    private Logger logger  = (Logger) LoggerFactory.getLogger(this.getClass());
     @Override
     public User saveUser(User user) {
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRoleList(List.of(AppConstants.ROLE_USER));
         return userRepo.save(user);
     }
 
