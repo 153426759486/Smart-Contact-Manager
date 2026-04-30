@@ -17,21 +17,42 @@ public class UserController {
     @Autowired
     UserRepo userRepo;
 
+
+
     @RequestMapping("/dashboard")
-    public String dashboard(Model model, Principal principal){
-        String email = principal.getName();
-        User user = userRepo.findByEmail(email).get();
-        model.addAttribute("user", user);
+    public String dashboard(){
+
+//        String email = principal.getName();
+//
+//        User user = userRepo.findByEmail(email)
+//                .orElseGet(() -> {
+//                    User newUser = new User();
+//                    newUser.setEmail(email);
+//                    newUser.setName("Google User"); // temp
+//                    newUser.setEnabled(true);
+//                    return userRepo.save(newUser);
+//                });
+//
+//        model.addAttribute("user", user);
         return "user/dashboard";
     }
 
+
     @RequestMapping("/profile")
-    public String userProfile(Model model , Principal principal){
-        String email = principal.getName();
-        User user = userRepo.findByEmail(email).get();
+    public String userProfile(){
 
-
-        model.addAttribute("user", user);
+//        String email = principal.getName();
+//
+//        User user = userRepo.findByEmail(email)
+//                .orElseGet(() -> {
+//                    User newUser = new User();
+//                    newUser.setEmail(email);
+//                    newUser.setName("Google User");
+//                    newUser.setEnabled(true);
+//                    return userRepo.save(newUser);
+//                });
+//
+//        model.addAttribute("user", user);
         return "user/profile";
     }
 }

@@ -49,7 +49,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws
                 formLogin.loginPage("/login")
                         .loginProcessingUrl("/authenticate")
                         .successForwardUrl("/user/dashboard")
-                        .failureForwardUrl("/login?error=true")
+//                        .failureForwardUrl("/login?error=true")
                         .usernameParameter("email")
                         .passwordParameter("password")
                 );
@@ -58,6 +58,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws
                 logoutForm.logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout=true")
                 );
+            httpSecurity.oauth2Login(Customizer.withDefaults());
 
 
 

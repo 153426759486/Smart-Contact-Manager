@@ -18,6 +18,10 @@ public class PageController {
     @Autowired
     UserService userService;
 
+    @RequestMapping("/")
+    public String rootRedirect() {
+        return "redirect:/user/dashboard";
+    }
 
     @RequestMapping("/home")
     public String Home(Model model){
