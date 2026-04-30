@@ -25,6 +25,14 @@
             <p class="font-normal text-gray-400">
                 Start managing contacts on cloud ...
             </p>
+
+<!--            //message showing if login fails! or for logout-->
+            <div class="text-red-600 text-center my-3" data-th-if="${param.error}">
+                Invalid username and password.</div>
+            <div  class="text-green-600 text-center my-3" data-th-if="${param.logout}">
+                You have been logged out.</div>
+
+
             <form data-th-action="@{'/authenticate'}" method="post" class="mt-5">
                 <!--name-->
 
