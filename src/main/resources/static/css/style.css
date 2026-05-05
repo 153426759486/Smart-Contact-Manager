@@ -1,0 +1,12 @@
+.login-with-google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #ddd;
+  font-weight: 500;
+  cursor: pointer;
+}

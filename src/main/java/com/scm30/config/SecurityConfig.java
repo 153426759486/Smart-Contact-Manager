@@ -20,7 +20,7 @@ public class SecurityConfig {
 
     @Autowired
     private SecurityCustomUserDetailService userDetailService;
-
+    @Autowired OAuthAuthenticationSuccessHandler oAuthAuthenticationSuccessHandler;
 
 
     //Configuration of Authentication Provider:
@@ -58,7 +58,10 @@ public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws
                 logoutForm.logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout=true")
                 );
-            httpSecurity.oauth2Login(Customizer.withDefaults());
+            httpSecurity.oauth2Login(oauth->{
+                oauth.loginPage("/login")
+                        .successHandler(oAuthAuthenticationSuccessHandler);
+            });
 
 
 
