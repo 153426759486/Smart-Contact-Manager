@@ -34,6 +34,8 @@ public class User implements UserDetails {
     @Column(length = 500)
     private String profilePic;
     private String phoneNumber;
+    @Version
+    private Long version;
 
     //information
     private boolean enabled=true;
@@ -47,6 +49,7 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Contact> contact = new ArrayList<>();
+
 
 
 
@@ -79,6 +82,9 @@ public class User implements UserDetails {
     public List<String> getRoleList() {
         return roleList;
     }
+    public Long getVersion() { return version;
+    }
+
 
 //    public boolean isEnabled() {
 //        return enabled;
@@ -160,6 +166,8 @@ public class User implements UserDetails {
 
     public void setRoleList(List<String> roleList) {
         this.roleList = roleList;
+    }
+    public void setVersion(Long version) {this.version = version;
     }
 
     // Methods Of UserDetails :-
