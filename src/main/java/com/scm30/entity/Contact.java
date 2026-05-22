@@ -18,6 +18,7 @@ public class Contact {
     private String webSiteLink;
     private String linkedInLink;
     //private List<SocialLink> socialLinks =  new ArrayList<>();
+    private  String cloudinaryImagePublicId;
 
 //getter setter
     public String getId() {
@@ -114,6 +115,14 @@ public class Contact {
 
     public void setLinks(List<SocialLink> links) {
         this.links = links;
+    }
+
+    public String getCloudinaryImagePublicId() {
+        return cloudinaryImagePublicId;
+    }
+
+    public void setCloudinaryImagePublicId(String cloudinaryImagePublicId) {
+        this.cloudinaryImagePublicId = cloudinaryImagePublicId;
     }
 
     public Contact(String id, String name, String email, String phoneNumber, String address, String picture, String description, boolean favorite, String webSiteLink, String linkedInLink, User user, List<SocialLink> links) {
