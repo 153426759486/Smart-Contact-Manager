@@ -21,7 +21,7 @@ public class ContactForm {
     private boolean favorite;
     private String websiteLink;
     private String linkedinLink;
-    private MultipartFile profileImage;
+    private MultipartFile contactImage;
 
     //getter And setter:
 
@@ -90,17 +90,17 @@ public class ContactForm {
         this.linkedinLink = linkedinLink;
     }
 
-    public MultipartFile getProfileImage() {
-        return profileImage;
+    public MultipartFile getcontactImage() {
+        return contactImage;
     }
 
-    public void setProfileImage(MultipartFile profileImage) {
-        this.profileImage = profileImage;
+    public void setcontactImage(MultipartFile contactImage) {
+        this.contactImage = contactImage;
     }
 
     //All args constructor:
 
-    public ContactForm(String name, String email, String phoneNumber, String address, String description, boolean favorite, String websiteLink, String linkedinLink, MultipartFile profileImage) {
+    public ContactForm(String name, String email, String phoneNumber, String address, String description, boolean favorite, String websiteLink, String linkedinLink, MultipartFile contactImage) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -109,7 +109,7 @@ public class ContactForm {
         this.favorite = favorite;
         this.websiteLink = websiteLink;
         this.linkedinLink = linkedinLink;
-        this.profileImage = profileImage;
+        this.contactImage = contactImage;
     }
 
     //no args constructor:
@@ -128,7 +128,7 @@ public class ContactForm {
                 ", favorite=" + favorite +
                 ", websiteLink='" + websiteLink + '\'' +
                 ", linkedinLink='" + linkedinLink + '\'' +
-                ", profileImage=" + profileImage +
+                ", contactImage=" + contactImage +
                 '}';
     }
 }
