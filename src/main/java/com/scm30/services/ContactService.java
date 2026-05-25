@@ -1,7 +1,10 @@
 package com.scm30.services;
 
 import com.scm30.entity.Contact;
+import com.scm30.entity.User;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -27,4 +30,6 @@ public interface ContactService {
     //get contact by userId
 
     List<Contact> getByUserId(String userId);
+
+    Page<Contact> getByUser(User user, int page, int size, String sortFeild, String sortDirection);
 }
