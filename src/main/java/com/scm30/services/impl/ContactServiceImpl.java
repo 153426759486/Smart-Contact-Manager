@@ -38,26 +38,46 @@ public class ContactServiceImpl  implements ContactService {
     @Override
     public Contact getById(String id) {
         return contactRepo.findById(id)
-                .orElseThrow(()-> new ResourceNotFoundException("Contact not Foundwith given id!" +id));
+                .orElseThrow(()-> new ResourceNotFoundException("Contact not Found with given id!" +id));
     }
 
     @Override
     public void delete(String id) {
     var contact = contactRepo.findById(id)
-            .orElseThrow(()-> new ResourceNotFoundException("Contact not Foundwith given id!" +id));
+            .orElseThrow(()-> new ResourceNotFoundException("Contact not Found with given id!" +id));
         contactRepo.delete(contact);
     }
 
-    @Override
-    public List<Contact> search(String name, String email, String phoneNumber) {
-        return List.of();
-    }
+
 
     @Override
     public List<Contact> getByUserId(String userId) {
         return contactRepo.findByUserId(userId);
     }
 
+    @Override
+    public Page<Contact> searchUserByName(String nameKeyword, int size, int page, String sortBy, String order) {
+        Sort sort = order.equals("desc")? Sort.by(sortBy).descending():Sort.by(sortBy).ascending();
+        var pageable = PageRequest.of(page,size,sort);
+
+        return contactRepo.findByNameContaining(nameKeyword,pageable);
+    }
+
+    @Override
+    public Page<Contact> searchUserByEmail(String emailKeyword, int size, int page, String sortBy, String order) {
+        Sort sort = order.equals("desc")? Sort.by(sortBy).descending():Sort.by(sortBy).ascending();
+        var pageable = PageRequest.of(page,size,sort);
+
+        return contactRepo.findByEmailContaining(emailKeyword,pageable);
+    }
+
+    @Override
+    public Page<Contact> searchUserByPhoneNumber(String phoneNumberKeyword, int size, int page, String sortBy, String order) {
+        Sort sort = order.equals("desc")? Sort.by(sortBy).descending():Sort.by(sortBy).ascending();
+        var pageable = PageRequest.of(page,size,sort);
+
+        return contactRepo.findByPhoneNumberContaining(phoneNumberKeyword,pageable);
+    }
 
 
     @Override
