@@ -123,4 +123,34 @@ public class ContactController {
         model.addAttribute("pageSize", AppConstants.pageSize);
         return "/user/contacts";
     }
+
+    @RequestMapping("/search")
+    public String searchHandler(
+            @RequestParam("field") String field,
+            @RequestParam("keyword") String value,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = AppConstants.pageSize +"") int size,
+            @RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
+            @RequestParam(value = "direction", defaultValue = "asc") String direction
+            ,Model model)
+    {
+        logger.info("field{} keyword{}", field, value);
+        Page<Contact> pageContact=null;
+        if(field.equalsIgnoreCase("name")){
+             pageContact = contactService.searchUserByName(value,size,page,sortBy,direction);
+        }
+        else if(field.equalsIgnoreCase("email")){
+            pageContact = contactService.searchUserByEmail(value,size,page,sortBy,direction);
+        }
+        else if(field.equalsIgnoreCase("phoneNumber")){
+            pageContact = contactService.searchUserByPhoneNumber(value,size,page,sortBy,direction);
+        }
+        else {
+            pageContact = Page.empty();
+        }
+        model.addAttribute("pageContact", pageContact);
+        logger.info("pagecontact {}", pageContact);
+
+        return "user/search";
+    }
 }

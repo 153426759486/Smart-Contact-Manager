@@ -18,4 +18,8 @@ public interface ContactRepo extends JpaRepository<Contact,String> {
 
     @Query("Select c from Contact c where c.user.Id= :userId")
     List<Contact> findByUserId(@Param("userId") String userId);
+
+    Page<Contact> findByNameContaining(String nameKeyword, Pageable pageable);
+    Page<Contact> findByEmailContaining(String emailKeyword, Pageable pageable);
+    Page<Contact> findByPhoneNumberContaining(String phoneKeyword, Pageable pageable);
 }

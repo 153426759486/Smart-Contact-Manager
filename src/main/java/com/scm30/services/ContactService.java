@@ -24,12 +24,20 @@ public interface ContactService {
 
     //delete
     void delete(String id);
-    //search contact
-    List<Contact> search(String name,String email,String phoneNumber);
+
 
     //get contact by userId
 
     List<Contact> getByUserId(String userId);
+
+
+    //search contact
+    Page<Contact> searchUserByName(String nameKeyword, int size, int page,String sortBy, String order);
+
+    Page<Contact> searchUserByEmail(String emailKeyword, int size, int page,String sortBy, String order);
+
+    Page<Contact> searchUserByPhoneNumber(String phoneNumberKeyword, int size, int page,String sortBy, String order);
+
 
     Page<Contact> getByUser(User user, int page, int size, String sortFeild, String sortDirection);
 }
