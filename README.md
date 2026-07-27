@@ -181,18 +181,6 @@ http://localhost:8080
 
 ---
 
-## Screenshots
-
-Add project screenshots here.
-
-```md
-![Dashboard](screenshots/dashboard.png)
-![Add Contact](screenshots/add-contact.png)
-![Profile](screenshots/profile.png)
-```
-
----
-
 ## Future Improvements
 
 * Dark Mode
